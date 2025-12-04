@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4">Резюме</h1>
+
+<section class="mb-4">
+    <h2>Про себе</h2>
+    <p>Герман Олександр АКА Skiffov </p>
+    <p>Забиває на всі дедлайни, від чого й страждає.</p>
+    <p>Характер нестабільний</p>
+    <p>Не одружений.</p>
+</section>
+
+<section class="mb-4">
+    <h2>Освіта</h2>
+    <p>КНУВС, 3 курс, Інженерія ПЗ</p>
+</section>
+
+<section class="mb-4">
+    <h2>Навички</h2>
+    <ul>
+        <li>Python</li>
+        <li>Java</li>
+        <li>Пайка за стандартами IPC-A-610 та IPC/WHMA-A-620 2-го класу</li>
+    </ul>
+</section>
+
+<section class="mb-4">
+    <h2>Технології</h2>
+    <p>Linux, HTML, CSS, Python, Java, IPC-A-610, IPC/WHMA-A-620</p>
+</section>
+
+<section class="mb-4">
+    <h2>Досвід роботи</h2>
+    <p>Листопад 2023 - Січень 2025: робота в ТОВ Зортекс-Сервіс на посаді ''Інженер електронних систем''</p>
+    <p>З Серпня 2025: робота в ТЕХТО І-Ф на посаді ''Монтажник радіоелектронних систем та апаратури''</p>
+</section>
+
+<!-- Фото з url_for -->
+<img src="{{ url_for('static', filename='images/scar.jpg') }}"
+     alt="Scar" class="img-fluid rounded" style="max-width: 300px;">
+
+{% endblock %}
