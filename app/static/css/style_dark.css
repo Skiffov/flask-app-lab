@@ -1,0 +1,73 @@
+body {
+    background: #1e1e1e;
+    color: #f0f0f0;
+}
+
+main {
+    background: #2a2a2a;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+header, footer {
+    background: #000;
+    color: #ccc;
+}
+
+nav a {
+    color: #bbb;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+button {
+    background: #444;
+    color: #fff;
+}
+
+button:hover {
+    background: #222;
+}
+
+.flash.success { background: #2e5939; color: #c9f6d0; }
+.flash.error   { background: #6b2d2d; color: #ffd6d6; }
+.flash.info    { background: #234955; color: #cbeaf1; }
+
+/* ===== INPUTS ===== */
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    background: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+/* ===== TABLE ===== */
+
+table {
+    background: #2a2a2a;
+    color: #e0e0e0;
+}
+
+table th {
+    background: #3a3a3a;
+    color: #fff;
+    border-bottom: 1px solid #666;
+}
+
+table td {
+    border: 1px solid #555;
+    word-break: break-all;
+}
+
+/* ===== LABELS ===== */
+
+label {
+    color: #e0e0e0;
+}

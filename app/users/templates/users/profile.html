@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Профіль{% endblock %}
+
+{% block content %}
+<h2>Профіль</h2>
+
+<p>Вітаю, {{ username }}!</p>
+
+<form method="post" action="{{ url_for('users.logout') }}">
+    <button type="submit">Вийти</button>
+</form>
+<h3>Додати cookie</h3>
+<form method="post" action="{{ url_for('users.set_cookie') }}">
+    <label>Назва:</label>
+    <input type="text" name="key">
+
+    <label>Значення:</label>
+    <input type="text" name="value">
+
+    <label>Максимальний вік (секунди):</label>
+    <input type="number" name="max_age" placeholder="необов'язково">
+
+    <button type="submit">Додати</button>
+</form>
+
+
+<h3>Поточні cookies</h3>
+
+{% if request.cookies %}
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Назва</th>
+        <th>Значення</th>
+        <th>Дія</th>
+    </tr>
+    {% for name, value in request.cookies.items() %}
+    <tr>
+        <td>{{ name }}</td>
+        <td>{{ value }}</td>
+        <td>
+            <form method="post" action="{{ url_for('users.delete_cookie', name=name) }}">
+                <button type="submit">Видалити</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Немає cookies.</p>
+{% endif %}
+</form>
+
+<form method="post" action="{{ url_for('users.delete_cookies') }}">
+    <button type="submit">Очистити всі cookies</button>
+</form>
+
+<h3>Змінити тему</h3>
+
+<a href="{{ url_for('users.set_theme', theme='light') }}">
+    <button type="button">Світла тема</button>
+</a>
+
+<a href="{{ url_for('users.set_theme', theme='dark') }}">
+    <button type="button">Темна тема</button>
+</a>
+
+
+{% endblock %}

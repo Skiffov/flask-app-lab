@@ -4,26 +4,46 @@
     <meta charset="utf-8">
     <title>{% block title %}Flask Application{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% if theme == 'dark' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_dark.css') }}">
+    {% else %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endif %}
+
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
+
 <header>
     <h1>Flask Application</h1>
     <nav>
         <ul>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="{{ url_for('users.greetings', name='John', age=30) }}">Greet John</a></li>
-            <li><a href="{{ url_for('users.admin') }}">Admin</a></li>
-            <li><a href="{{ url_for('products.index') }}">Products</a></li>
+            <li><a href="{{ url_for('index') }}">Головна</a></li>
+            <li><a href="{{ url_for('resume') }}">Резюме</a></li>
+            <li><a href="{{ url_for('users.profile') }}">Профіль</a></li>
+            <li><a href="{{ url_for('users.login') }}">Вхід</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
+    {# Блок flash-повідомлень з категоріями #}
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     {% block content %}{% endblock %}
 </main>
 
 <footer>
-    <p>&copy; {{ 2025 }}</p>
+    <p>&copy; 2025</p>
 </footer>
+
 </body>
 </html>
+
