@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_render_field.html" import render_field %}
+
+{% block title %}Контакти{% endblock %}
+
+{% block content %}
+<h2>Контактна форма</h2>
+
+<form method="post" action="{{ url_for('contact') }}" novalidate>
+    {{ form.csrf_token }}
+
+    <dl>
+        {{ render_field(form.name) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.phone) }}
+        {{ render_field(form.subject) }}
+        {{ render_field(form.message, rows=4) }}
+    </dl>
+
+    {{ form.submit() }}
+</form>
+{% endblock %}

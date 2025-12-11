@@ -154,3 +154,31 @@ td {
 }
 
 <table class="cookies-table">
+
+input, select, textarea {
+    background-color: #f2f2f2;
+    color: #000;
+    padding: 8px 10px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #555;
+}
+
+button, input[type="submit"] {
+    background-color: #ddd;
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid #888;
+    cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #ccc;
+}

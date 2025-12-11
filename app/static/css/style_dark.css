@@ -71,3 +71,30 @@ table td {
 label {
     color: #e0e0e0;
 }
+input, select, textarea {
+    background-color: #2a2a2a;
+    color: #fff;
+    padding: 8px 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #aaa;
+}
+
+button, input[type="submit"] {
+    background-color: #444;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid #666;
+    cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #555;
+}

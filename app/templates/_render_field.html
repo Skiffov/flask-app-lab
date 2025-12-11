@@ -1,0 +1,25 @@
+{% macro render_field(field, rows=None) %}
+    <dt>{{ field.label }}</dt>
+    <dd>
+        {% if field.errors %}
+            {% if rows %}
+                {{ field(rows=rows, style="background-color: #fdd;") }}
+            {% else %}
+                {{ field(style="background-color: #fdd;") }}
+            {% endif %}
+
+            <ul class="errors">
+            {% for error in field.errors %}
+                <li class="list-group-item list-group-item-danger">{{ error }}</li>
+            {% endfor %}
+            </ul>
+
+        {% else %}
+            {% if rows %}
+                {{ field(rows=rows) }}
+            {% else %}
+                {{ field() }}
+            {% endif %}
+        {% endif %}
+    </dd>
+{% endmacro %}

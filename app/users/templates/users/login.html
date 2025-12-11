@@ -1,16 +1,34 @@
 {% extends 'base.html' %}
+{% from '_render_field.html' import render_field %}
 
 {% block title %}Вхід{% endblock %}
 
 {% block content %}
 <h2>Вхід</h2>
-<form method="post" action="{{ url_for('users.login') }}">
-    <label for="username">Логін:</label>
-    <input type="text" id="username" name="username" required>
 
-    <label for="password">Пароль:</label>
-    <input type="password" id="password" name="password" required>
+<form method="post" action="{{ url_for('users.login') }}" novalidate>
+    {{ form.csrf_token }}
 
-    <button type="submit">Увійти</button>
+    <dl>
+        {{ render_field(form.username) }}
+        {{ render_field(form.password) }}
+        {{ render_field(form.remember) }}
+    </dl>
+
+    {{ form.submit() }}
 </form>
+
+{% if data %}
+<h3>Дані після входу (пункт 8)</h3>
+<table>
+    <tr><th>Поле</th><th>Значення</th></tr>
+    {% for key, value in data.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
 {% endblock %}
