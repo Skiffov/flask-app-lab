@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "_render_field.html" import render_field %}
+
+{% block content %}
+<div class="post-form">
+    <h2>Створити / Редагувати пост</h2>
+
+    <form method="post">
+        {{ form.csrf_token }}
+
+        {{ render_field(form.title) }}
+        {{ render_field(form.content) }}
+        {{ render_field(form.category) }}
+        {{ render_field(form.enabled) }}
+        {{ render_field(form.posted) }}
+
+        {{ form.submit(class="btn") }}
+    </form>
+</div>
+{% endblock %}

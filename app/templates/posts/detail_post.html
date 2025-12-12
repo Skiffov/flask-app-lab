@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="posts-container">
+    <div class="post-card">
+        <h2>{{ post.title }}</h2>
+        <small>{{ post.posted.strftime("%Y-%m-%d %H:%M") }} | {{ post.category }}</small>
+        <p>{{ post.content }}</p>
+
+        <div class="post-actions">
+            <a href="{{ url_for('posts.update_post', post_id=post.id) }}">Редагувати</a>
+            <a href="{{ url_for('posts.delete_post', post_id=post.id) }}">Видалити</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

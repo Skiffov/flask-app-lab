@@ -17,8 +17,9 @@
     <h1>Flask Application</h1>
     <nav>
         <ul>
-            <li><a href="{{ url_for('index') }}">Головна</a></li>
+            <li><a href="{{ url_for('users.login') }}">Головна</a></li>
             <li><a href="{{ url_for('contact') }}">Контакт</a></li>
+	    <li><a href="{{ url_for('posts.index') }}">Пости</a></li>
             <li><a href="{{ url_for('users.profile') }}">Профіль</a></li>
             <li><a href="{{ url_for('users.login') }}">Вхід</a></li>
         </ul>

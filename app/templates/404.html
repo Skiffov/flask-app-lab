@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align:center; margin-top:50px;">
+    <h1>404 — Сторінку не знайдено</h1>
+    <p>Такої сторінки не існує або вона була видалена.</p>
+    <a href="{{ url_for('index') }}">Повернутися на головну</a>
+</div>
+{% endblock %}

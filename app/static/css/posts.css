@@ -1,0 +1,39 @@
+.post-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.post-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 1rem;
+}
+
+.post-content h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+}
+
+.post-content .meta {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.post-content p {
+    margin-bottom: 0.75rem;
+}
+
+.post-content a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}

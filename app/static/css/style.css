@@ -182,3 +182,74 @@ button, input[type="submit"] {
 button:hover, input[type="submit"]:hover {
     background-color: #ccc;
 }
+/* ======================
+   POSTS MODULE
+   ====================== */
+
+.posts-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.post-card {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+
+.post-card h3 {
+    margin: 0 0 8px;
+}
+
+.post-card small {
+    color: #777;
+}
+
+.post-actions {
+    margin-top: 10px;
+}
+
+.post-actions a {
+    margin-right: 10px;
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.post-actions a:hover {
+    text-decoration: underline;
+}
+
+/* FORM STYLING FOR POSTS */
+
+.post-form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.post-form input,
+.post-form select,
+.post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+}
+
+.post-form button,
+.post-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #444;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.post-form button:hover,
+.post-form input[type="submit"]:hover {
+    background: #222;
+}
