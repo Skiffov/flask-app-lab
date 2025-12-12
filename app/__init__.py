@@ -3,6 +3,8 @@ from app.config import DevelopmentConfig, TestingConfig, ProductionConfig
 from app.extensions import db, migrate
 from flask import render_template
 from app.forms import ContactForm
+from pathlib import Path
+
 
 config_map = {
     "development": DevelopmentConfig,
@@ -12,14 +14,13 @@ config_map = {
 
 
 def create_app(config_name="development"):
-    app = Flask(__name__)
+    app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_map[config_name])
+
+    Path(app.instance_path).mkdir(parents=True, exist_ok=True)
 
     db.init_app(app)
     migrate.init_app(app, db)
-
-    with app.app_context():
-        db.create_all()
 
     from app.posts import posts_bp
     from app.users import users_bp
