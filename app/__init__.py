@@ -18,6 +18,9 @@ def create_app(config_name="development"):
     db.init_app(app)
     migrate.init_app(app, db)
 
+    with app.app_context():
+        db.create_all()
+
     from app.posts import posts_bp
     from app.users import users_bp
     from app.products import products_bp
