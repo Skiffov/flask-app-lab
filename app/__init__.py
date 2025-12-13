@@ -1,8 +1,6 @@
-from flask import Flask, render_template
 from app.config import DevelopmentConfig, TestingConfig, ProductionConfig
 from app.extensions import db, migrate
-from flask import render_template
-from app.forms import ContactForm
+from flask import Flask, render_template
 from pathlib import Path
 
 
@@ -42,6 +40,7 @@ def create_app(config_name="development"):
 
     @app.route("/contact", methods=["GET", "POST"])
     def contact():
+        from app.forms import ContactForm
         form = ContactForm()
         return render_template("contact.html", form=form)
 
