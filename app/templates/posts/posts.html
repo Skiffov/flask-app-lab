@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 
-{% block styles %}
-{% endblock %}
-
 {% block content %}
 <div class="posts-container">
     <h2>Пости</h2>
@@ -11,15 +8,26 @@
 
     {% for post in posts %}
     <div class="post-card">
-        <img src="{{url_for('static', filename='img/scar.jpg') }}" style="max-width: 300px;">
+        <img src="{{ url_for('static', filename='img/scar.jpg') }}" style="max-width: 300px;">
+
         <div class="post-content">
             <h2>{{ post.title }}</h2>
+
             <p class="meta">
-                Категорія: {{ post.category }} |
-                Автор: {{ post.author }} |
+                Категорія: {{ post.category.value }}
+                |
+                Автор:
+                {% if post.user %}
+                    {{ post.user.username }}
+                {% else %}
+                    —
+                {% endif %}
+                |
                 Дата: {{ post.posted.strftime('%Y-%m-%d %H:%M') }}
             </p>
+
             <p>{{ post.content[:200] }}...</p>
+
             <div class="post-actions">
                 <a href="{{ url_for('posts.detail_post', post_id=post.id) }}">Переглянути</a>
                 <a href="{{ url_for('posts.update_post', post_id=post.id) }}">Редагувати</a>

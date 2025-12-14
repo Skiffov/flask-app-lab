@@ -2,6 +2,9 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from app.extensions import db
 from .models import Post
 from .forms import PostForm
+from app.users.models import User
+from app.posts.models import Tag
+
 
 bp = Blueprint("posts", __name__, url_prefix="/posts")
 
@@ -25,7 +28,7 @@ def update_post(post_id):
         form.populate_obj(post)
         db.session.commit()
         return redirect(url_for("posts.detail_post", post_id=post.id))
-
+        
     return render_template("posts/add_post.html", form=form, post=post)
 
 
@@ -35,9 +38,16 @@ def update_post(post_id):
 def create_post():
     form = PostForm()
 
+    form.author_id.choices = [
+        (u.id, u.username) for u in User.query.order_by(User.id)
+    ]
+
+    form.tags.choices = [
+        (t.id, t.name) for t in Tag.query.order_by(Tag.name)
+    ]
+
     if request.method == "POST":
-        print("POST data:", request.form)
-        print("Form.errors:", form.errors)
+        print("FORM ERRORS:", form.errors)
 
     if form.validate_on_submit():
         post = Post(
@@ -45,16 +55,21 @@ def create_post():
             content=form.content.data,
             category=form.category.data,
             enabled=form.enabled.data,
-            author="anon"
+            user_id=form.author_id.data
         )
+
+        # збереження тегів (пункт 11)
+        post.tags = Tag.query.filter(
+            Tag.id.in_(form.tags.data)
+        ).all()
+
         db.session.add(post)
         db.session.commit()
+
         flash("Post created", "success")
         return redirect(url_for("posts.index"))
 
     return render_template("posts/add_post.html", form=form)
-
-
 
 @bp.route("/<int:post_id>/delete", methods=["GET", "POST"])
 def delete_post(post_id):

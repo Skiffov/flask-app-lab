@@ -6,13 +6,16 @@
     <h2>Створити / Редагувати пост</h2>
 
     <form method="post">
-        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
 
         {{ render_field(form.title) }}
         {{ render_field(form.content) }}
         {{ render_field(form.category) }}
         {{ render_field(form.enabled) }}
         {{ render_field(form.posted) }}
+
+        {{ render_field(form.author_id) }}
+        {{ render_field(form.tags) }}
 
         {{ form.submit(class="btn") }}
     </form>

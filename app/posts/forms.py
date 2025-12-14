@@ -1,5 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SelectField, BooleanField, SubmitField, DateTimeLocalField
+from wtforms import (
+    StringField,
+    TextAreaField,
+    SelectField,
+    SelectMultipleField,
+    BooleanField,
+    SubmitField,
+    DateTimeLocalField,
+)
 from wtforms.validators import DataRequired
 from datetime import datetime
 
@@ -12,6 +20,14 @@ class PostForm(FlaskForm):
         ("tech", "Tech"),
         ("life", "Life")
     ])
-    posted = DateTimeLocalField("Дата публікації", format="%Y-%m-%dT%H:%M", default=datetime.utcnow)
+    posted = DateTimeLocalField(
+        "Дата публікації",
+        format="%Y-%m-%dT%H:%M",
+        default=datetime.utcnow
+    )
     enabled = BooleanField("enabled", default=True)
+
+    author_id = SelectField("Author", coerce=int)
+    tags = SelectMultipleField("Tags", coerce=int)
+
     submit = SubmitField("Submit")
